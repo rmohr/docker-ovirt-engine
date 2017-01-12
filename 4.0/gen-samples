@@ -1,0 +1,44 @@
+#!/usr/bin/python2
+
+# Usage: get-conf-item item
+
+import glob
+try:
+    from vdsm.config import config
+except:
+    from six.moves import configparser
+    config = configparser.ConfigParser()
+
+config.read('pod_definition.conf')
+try:
+    cluster_name = config.get('vars', 'CLUSTER_NODE_NAME')
+    engine_fqdn = config.get('vars', 'ENGINE_FQDN')
+    nfs_base_path = config.get('vars', 'NFS_BASE_PATH')
+    nfs_server_address = config.get('vars', 'NFS_SERVER_ADDRESS')
+    spice_proxy_ip = config.get('vars', 'SPICE_PROXY_IP')
+    engine_password = config.get('vars', 'ENGINE_PASSWORD')
+    postgres_password = config.get('vars', 'POSTGRES_PASSWORD')
+except:
+    print 'Items are not configured properly'
+
+
+def gen_file(in_file):
+    filedata = None
+    with open(in_file, 'r') as file:
+        filedata = file.read()
+        filedata = filedata.replace('@CLUSTER_NODE_NAME@', cluster_name)
+        filedata = filedata.replace('@ENGINE_FQDN@', engine_fqdn)
+        filedata = filedata.replace('@NFS_BASE_PATH@', nfs_base_path)
+        filedata = filedata.replace('@NFS_SERVER_ADDRESS@', nfs_server_address)
+        filedata = filedata.replace('@SPICE_PROXY_IP@', spice_proxy_ip)
+        filedata = filedata.replace('@ENGINE_PASSWORD@', engine_password)
+        filedata = filedata.replace('@POSTGRES_PASSWORD@', postgres_password)
+
+        out_file = in_file[:-3]
+        with open(out_file, 'w') as file:
+            file.write(filedata)
+            print out_file + ' was generated'
+
+
+for in_file in glob.glob('*sample*.in'):
+    gen_file(in_file)
