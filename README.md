@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/rmohr/docker-ovirt-engine.svg?branch=master)](https://travis-ci.org/rmohr/docker-ovirt-engine)
 
+This repository is **deprecated**. This project is now part of oVirt and was moved to **https://github.com/oVirt/ovirt-container-engine**.
+
 Dockerized version of ovirt-engine, the management part of oVirt.
 
 ## Run ovirt-engine
