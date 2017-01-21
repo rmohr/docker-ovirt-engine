@@ -44,7 +44,7 @@
           },
           {
             "name": "POSTGRES_PASSWORD",
-            "value": "YOUR_POSTGRES_PASSWORD_HERE"
+            "value": "@POSTGRES_PASSWORD@"
           },
           {
             "name": "POSTGRES_DB",
@@ -60,11 +60,11 @@
           },
           {
             "name": "OVIRT_FQDN",
-            "value": "YOUR_ENGINE_FQDN_HERE"
+            "value": "@ENGINE_FQDN@"
           },
           {
             "name": "OVIRT_PASSWORD",
-            "value": "YOUR_OVIRT_ENGINE_PASSWORD_HERE"
+            "value": "@ENGINE_PASSWORD@"
           },
           {
             "name": "OVIRT_PKI_ORGANIZATION",
@@ -72,7 +72,7 @@
           },
           {
             "name": "SPICE_PROXY",
-            "value": "http://YOUR_IP_HERE:3128"
+            "value": "http://@SPICE_PROXY_IP@:3128"
           }
         ]
       },
@@ -99,7 +99,7 @@
           },
           {
             "name": "POSTGRES_PASSWORD",
-            "value": "YOUR_POSTGRES_PASSWORD_HERE"
+            "value": "@POSTGRES_PASSWORD@"
           },
           {
             "name": "POSTGRES_DB",
@@ -123,34 +123,34 @@
       {
         "name": "certs",
         "nfs": {
-          "server": "YOUR_NFS_URL_HERE",
-          "path": "YOUR_NFS_PATH_HERE/certs"
+          "server": "@NFS_SERVER_ADDRESS@",
+          "path": "@NFS_BASE_PATH@/certs"
         }
       },
       {
         "name": "backups",
         "nfs": {
-          "server": "YOUR_NFS_URL_HERE",
-          "path": "YOUR_NFS_PATH_HERE/backups"
+          "server": "@NFS_SERVER_ADDRESS@",
+          "path": "@NFS_BASE_PATH@/backups"
         }
       },
       {
         "name": "pgdata",
         "nfs": {
-          "server": "YOUR_NFS_URL_HERE",
-          "path": "YOUR_NFS_PATH_HERE/pgdata"
+          "server": "@NFS_SERVER_ADDRESS@",
+          "path": "@NFS_BASE_PATH@/pgdata"
         }
       },
       {
         "name": "plugins",
         "nfs": {
-          "server": "YOUR_NFS_URL_HERE",
-          "path": "YOUR_NFS_PATH_HERE/plugins"
+          "server": "@NFS_SERVER_ADDRESS@",
+          "path": "@NFS_BASE_PATH@/plugins"
         }
       }
     ],
     "nodeSelector": {
-      "kubernetes.io/hostname": "YOUR_TARGET_HOSTNAME_HERE"
+      "kubernetes.io/hostname": "@CLUSTER_NODE_NAME@"
     }
   }
 }

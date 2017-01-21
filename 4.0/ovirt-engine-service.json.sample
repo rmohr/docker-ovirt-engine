@@ -29,7 +29,7 @@
       }
     ],
     "externalIPs": [
-      "YOUR_IP_HERE"
+      "@EXTERNAL_IPS@"
     ]
   }
 }
